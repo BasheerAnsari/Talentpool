@@ -1,0 +1,62 @@
+========================================================================================================================
+ERROR LOG - 2025-12-10 17:52:10
+Context: recruiter_signup_service
+Total Errors: 1
+========================================================================================================================
+
++---------------------+----------------------+--------------------------+--------------+---------------------------------------------------+
+| Timestamp           | Stage                | Function                 | Error Type   | Message                                           |
++=====================+======================+==========================+==============+===================================================+
+| 2025-12-10 17:52:10 | recruiter_signup_ser | recruiter_signup_service | ValueError   | password cannot be longer than 72 bytes, truncate |
++---------------------+----------------------+--------------------------+--------------+---------------------------------------------------+
+
+========================================================================================================================
+DETAILED STACK TRACES
+========================================================================================================================
+
+Function: recruiter_signup_service
+Error: ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+--------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\nouma\Desktop\new project\core_services\app\shared\helper\error_logger.py", line 139, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\app\services\recruiter_services.py", line 17, in recruiter_signup_service
+    hashed_password = bcrypt.hash(safe_password)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\utils\handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\handlers\bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\utils\handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\utils\handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\utils\handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\utils\handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\utils\handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         ^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\handlers\bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\handlers\bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\handlers\bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\utils\handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\dev\Lib\site-packages\passlib\handlers\bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+
+========================================================================================================================
+

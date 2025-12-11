@@ -1,0 +1,35 @@
+========================================================================================================================
+ERROR LOG - 2025-12-11 13:14:07
+Context: recruiter_signin_route
+Total Errors: 1
+========================================================================================================================
+
++---------------------+----------------------+------------------+---------------+-----------------------------------+
+| Timestamp           | Stage                | Function         | Error Type    | Message                           |
++=====================+======================+==================+===============+===================================+
+| 2025-12-11 13:14:07 | recruiter_signin_rou | recruiter_signin | HTTPException | 401: Invalid username or password |
++---------------------+----------------------+------------------+---------------+-----------------------------------+
+
+========================================================================================================================
+DETAILED STACK TRACES
+========================================================================================================================
+
+Function: recruiter_signin
+Error: HTTPException: 401: Invalid username or password
+--------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\nouma\Desktop\new project\core_services\app\shared\helper\error_logger.py", line 139, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\app\routes\recruiter_routes.py", line 37, in recruiter_signin
+    return recruiter_signin_service(data, db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\app\shared\helper\error_logger.py", line 139, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nouma\Desktop\new project\core_services\app\services\recruiter_services.py", line 49, in recruiter_signin_service
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 401: Invalid username or password
+
+========================================================================================================================
+
