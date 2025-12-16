@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import and_
 from fastapi import HTTPException
 from app.models.job import Job
 from app.schemas.job import JOB
@@ -46,12 +47,6 @@ class JobService:
                 filters.append(Job.location.ilike(f"%{location}%"))
              
             query = query.filter(and_(*filters))
-
-            if job_title:
-                query = query.filter(Job.job_title.ilike(f"%{job_title}%"))
-
-            if location:
-                query = query.filter(Job.location.ilike(f"%{location}%"))
 
             return Paginator.pagination(query,page,per_page)
 

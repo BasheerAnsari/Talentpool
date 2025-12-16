@@ -1,11 +1,17 @@
 from fastapi import FastAPI
+
 from app.routes.recruiter_routes import router as recruiter_router
 from app.routes.dashboard_routes import router as dashboard_router
+from app.routes.jd_routes import router as jd_router
+
 from app.core.database import Base, engine
+
 from app.models.recruiter_model import Recruiter
-from app.routes.job_router import job_router
+
 from app.config import get_settings
+
 from fastapi.middleware.cors import CORSMiddleware
+
 
 settings = get_settings()
 
@@ -26,6 +32,10 @@ app.include_router(job_router)
 # recruiter dashbord 
 app.include_router(dashboard_router)
 
+# Register JD extractor
+app.include_router(jd_router)
+
+# Middle ware CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # allow all domains (for development)

@@ -6,7 +6,7 @@ from app.core.database import get_db
 from app.services.job_service import JobService
 
 
-job_router = APIRouter(prefix="/job", tags=["jobs"])
+job_router = APIRouter(prefix="/api/job", tags=["jobs"])
 
 
 # Create Job
